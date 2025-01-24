@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookShelf - Your Personal Library</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <!-- Header -->
+    <header class="text-center mb-5">
+      <h1 class="display-4 fw-bold text-primary mb-3">📚 BookShelf</h1>
+      <p class="lead text-muted">Discover, organize, and track your reading journey</p>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="input-group mb-3">
+                <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Search books by title, author, or ISBN...">
+                <button class="btn btn-primary px-4" id="searchButton">Search</button>
+              </div>
+              <div class="d-flex gap-2">
+                <select id="filterCategory" class="form-select">
+                  <option value="all">All Categories</option>
+                  <option value="fiction">Fiction</option>
+                  <option value="nonfiction">Non-Fiction</option>
+                  <option value="science">Science</option>
+                  <option value="technology">Technology</option>
+                  <option value="art">Art</option>
+                </select>
+                <select id="sortBy" class="form-select">
+                  <option value="relevance">Sort by Relevance</option>
+                  <option value="newest">Sort by Newest</option>
+                  <option value="title">Sort by Title</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Library Stats -->
+    <div class="stats-container mb-4">
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-3">
+          <div class="card shadow-sm text-center">
+            <div class="card-body">
+              <h3 class="card-title h2 mb-0" id="totalBooks">0</h3>
+              <p class="text-muted mb-0">Total Books</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow-sm text-center">
+            <div class="card-body">
+              <h3 class="card-title h2 mb-0" id="readingNow">0</h3>
+              <p class="text-muted mb-0">Reading Now</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow-sm text-center">
+            <div class="card-body">
+              <h3 class="card-title h2 mb-0" id="wishlist">0</h3>
+              <p class="text-muted mb-0">Wishlist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4" id="libraryTabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#searchResults">Search Results</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#myLibrary">My Library</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#wishlistTab">Wishlist</a>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Search Results -->
+      <div class="tab-pane fade show active" id="searchResults">
+        <div id="resultsContainer" class="row g-4">
+          <!-- Search results will be populated here -->
+        </div>
+        <div id="loadingSpinner" class="text-center d-none">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Library -->
+      <div class="tab-pane fade" id="myLibrary">
+        <div class="mb-4">
+          <select id="libraryFilter" class="form-select">
+            <option value="all">All Books</option>
+            <option value="reading">Reading Now</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <div id="libraryContainer" class="row g-4">
+          <!-- Library books will be populated here -->
+        </div>
+      </div>
+
+      <!-- Wishlist -->
+      <div class="tab-pane fade" id="wishlistTab">
+        <div id="wishlistContainer" class="row g-4">
+          <!-- Wishlist books will be populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Book Details Modal -->
+  <div class="modal fade" id="bookModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Book Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+              <img id="modalBookCover" src="" alt="Book cover" class="img-fluid rounded">
+            </div>
+            <div class="col-md-8">
+              <h4 id="modalBookTitle"></h4>
+              <p class="text-muted" id="modalBookAuthors"></p>
+              <div class="mb-3">
+                <span class="badge bg-primary me-2" id="modalBookCategory"></span>
+                <span class="badge bg-secondary" id="modalBookPages"></span>
+              </div>
+              <p id="modalBookDescription"></p>
+              <div class="d-flex gap-2 mt-4">
+                <select id="readingStatus" class="form-select">
+                  <option value="reading">Reading Now</option>
+                  <option value="completed">Completed</option>
+                  <option value="wishlist">Add to Wishlist</option>
+                </select>
+                <button id="saveToLibrary" class="btn btn-primary">Save to Library</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
