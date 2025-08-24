@@ -6,7 +6,7 @@ const MAX_RESULTS = 20;
 let state = {
   library: [],
   wishlist: [],
-  searchResults: [],
+  searchResults: [], 
   currentBook: null 
 };
 
@@ -252,5 +252,6 @@ document.getElementById('libraryFilter').addEventListener('change', renderLibrar
 // Initialize
 
 loadSavedData();
+
 
 
