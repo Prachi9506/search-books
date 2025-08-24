@@ -7,7 +7,7 @@ let state = {
   library: [],
   wishlist: [],
   searchResults: [],
-  currentBook: null
+  currentBook: null 
 };
 
 // Load saved data from localStorage
@@ -250,4 +250,5 @@ document.getElementById('saveToLibrary').addEventListener('click', saveToLibrary
 document.getElementById('libraryFilter').addEventListener('change', renderLibrary);
 
 // Initialize
+
 loadSavedData();
