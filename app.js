@@ -13,7 +13,7 @@ let state = {
 // Load saved data from localStorage 
 function loadSavedData() {
   const savedLibrary = localStorage.getItem('bookshelf_library');  
-  const savedWishlist = localStorage.getItem('bookshelf_wishlist');
+  const savedWishlist = localStorage.getItem('bookshelf_wishlist'); 
    
   if (savedLibrary) state.library = JSON.parse(savedLibrary);
   if (savedWishlist) state.wishlist = JSON.parse(savedWishlist);
@@ -252,6 +252,7 @@ document.getElementById('libraryFilter').addEventListener('change', renderLibrar
 // Initialize
 
 loadSavedData();
+
 
 
 
