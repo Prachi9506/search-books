@@ -1,5 +1,5 @@
 // Constants
-const GOOGLE_BOOKS_API = 'https://www.googleapis.com/books/v1/volumes';
+const GOOGLE_BOOKS_API = 'https://www.googleapis.com/books/v1/volumes'; 
 const MAX_RESULTS = 20;
 
 // State Management
@@ -252,3 +252,4 @@ document.getElementById('libraryFilter').addEventListener('change', renderLibrar
 // Initialize
 
 loadSavedData();
+
