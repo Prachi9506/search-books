@@ -8,7 +8,7 @@ let state = {
   wishlist: [],
   searchResults: [], 
   currentBook: null 
-};
+}; 
 
 // Load saved data from localStorage
 function loadSavedData() {
@@ -252,6 +252,7 @@ document.getElementById('libraryFilter').addEventListener('change', renderLibrar
 // Initialize
 
 loadSavedData();
+
 
 
 
